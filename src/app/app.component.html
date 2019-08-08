@@ -1,0 +1,45 @@
+<!-- Responsive grid of cards -->
+<div class="grid-container">
+    <div *ngFor="let cardsRow of gridData" class="col-lg-12 row">
+        <div *ngFor="let src of cardsRow" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <card [imgSrc]="src" [height]="100" [width]="200"
+                (hover)="onCardHover($event)"></card>
+        </div>
+    </div>
+</div>
+
+<!-- Transparent overlay for hovered card -->
+<div *ngIf="hoveredCard" class="hovered-card-container">
+    <div class="hovered-card">
+        <i class="fa fa-times close-btn" aria-hidden="true" (click)="closeCard()"></i>
+        <img [src]="hoveredCard.getImageSrc()" [height]="150" [width]="300" class="hovered-card-img">
+        <i class="fa fa-pencil-alt edit-btn" aria-hidden="true" (click)="openEditImageModal(template)"></i>
+    </div>
+</div>
+
+<!-- Modal to change card image -->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Image</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="hideEditImageModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="edit-modal-body">
+        <div *ngIf="hoveredCard">
+            Original Image
+            <img [src]="hoveredCard.getImageSrc()" [height]="150" [width]="220">
+        </div>
+        <div>
+            New Image
+            <img *ngIf="!newImageBase64" [src]="dummyImageSrc" [height]="150" [width]="220">
+            <img *ngIf="newImageBase64" [src]="newImageBase64" [height]="150" [width]="220">
+            <div class="change-img-btns">
+                <input #newImage type="file" id="newImage" name="newImage" accept="image/png, image/jpeg">
+                <button type="button" (click)="changeCardImage()">Confirm Image</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</ng-template>

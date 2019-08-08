@@ -1,0 +1,48 @@
+.grid-container {
+    position: absolute;
+    width: 900px;
+    left: 18%;
+    margin-top: 5%;
+}
+
+.hovered-card-container {
+    position: fixed;
+    width: 302px;
+    height: 192px;
+    top: 35%;
+    left: 39%;
+    border: 1px groove;
+}
+
+.hovered-card {
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    left: 290px;
+    top: -14px;
+    font-size: 30px;
+}
+
+.hovered-card-img {
+    position: absolute;
+    top: 20px;
+    opacity: 0.8;
+}
+
+.edit-btn {
+    position: absolute;
+    color: white;
+    top: 80px;
+    left: 130px;
+    font-size: 35px;
+}
+
+.edit-modal-body {
+    display: inline-flex;
+}
+
+.change-img-btns {
+    margin-top: 20px;
+}
